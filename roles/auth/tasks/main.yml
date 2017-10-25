@@ -1,0 +1,21 @@
+---
+
+- name: Get Auth Cookie
+  uri:
+      url: "https://{{ DNAC }}/api/system/v1/auth/token"
+      method: POST
+      user: "{{ DNAC_USER }}"
+      password: "{{ DNAC_PASSWORD }}"
+      force_basic_auth: yes
+      status_code: 200
+      return_content: yes
+      validate_certs: no
+  register: token
+
+- name: Set cookie as fact
+  set_fact: cookie="X-JWT-ACCESS-TOKEN={{ token.json.Token }}"
+
+# not really required
+- name: Check cookie
+  debug: var=cookie
+  verbosity: 3

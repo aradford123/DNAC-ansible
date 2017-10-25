@@ -1,0 +1,20 @@
+---
+
+- name: Get Upload task status
+  uri:
+    url: 'https://{{ DNAC }}/api/v1/task/{{ taskId }}'
+    method: GET
+    return_content: yes
+    validate_certs: no
+    headers:
+        Cookie: "{{ cookie }}"
+  register: thetask_response
+  until: thetask_response.json.response.endTime is defined
+  retries: 60
+  delay: 5
+
+- name: Set response as fact
+  set_fact: task_response="{{ thetask_response.json.response }}"
+
+- name: Task Details
+  debug: var=task_response
