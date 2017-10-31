@@ -2,7 +2,7 @@
 
 - name: Get Upload task status
   uri:
-    url: 'https://{{ DNAC }}/api/v1/task/{{ taskId }}'
+    url: 'https://{{ dnac.host }}/api/v1/task/{{ taskId }}'
     method: GET
     return_content: yes
     validate_certs: no

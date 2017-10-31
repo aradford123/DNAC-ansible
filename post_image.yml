@@ -1,0 +1,21 @@
+---
+# need to put this into a role
+- hosts: localhost
+  vars_files:
+    - vars.yml
+
+    post_body:
+      - siteUuid: "-1"
+        sourceURL: http://10.66.104.77:8000/cat3k_caa-universalk9.16.06.01.SPA.bin
+  roles:
+  - auth
+  - { role: post,
+      posturl: 'image/importation/source/url'
+        }
+
+  - task
+
+
+
+
+

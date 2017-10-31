@@ -1,0 +1,15 @@
+---
+# need to put this into a role
+- hosts: localhost
+
+  vars_files:
+    - vars.yml
+
+  roles:
+  - auth
+  - { role: get, geturl: 'network-device' }
+
+  tasks:
+  - name: show result
+    debug:
+     var: response

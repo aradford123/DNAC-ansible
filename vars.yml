@@ -1,0 +1,5 @@
+---
+dnac:
+   host: dnac
+   user: admin
+   password: password

@@ -2,10 +2,10 @@
 
 - name: Get Auth Cookie
   uri:
-      url: "https://{{ DNAC }}/api/system/v1/auth/token"
+      url: "https://{{ dnac.host }}/api/system/v1/auth/token"
       method: POST
-      user: "{{ DNAC_USER }}"
-      password: "{{ DNAC_PASSWORD }}"
+      user: "{{ dnac.user }}"
+      password: "{{ dnac.password }}"
       force_basic_auth: yes
       status_code: 200
       return_content: yes

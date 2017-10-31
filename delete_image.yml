@@ -1,0 +1,12 @@
+---
+# need to put this into a role
+- hosts: localhost
+  vars_files:
+    - vars.yml
+
+  roles:
+  - auth
+  - { role: get, geturl: 'image/importation?name=cat3k_caa-universalk9.16.06.01.SPA.bin' }
+  - { role: delete, deleteurl: 'image/importation/{{ response[0].imageUuid }}'}
+
+  - task

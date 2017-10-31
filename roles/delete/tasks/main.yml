@@ -1,18 +1,17 @@
 - name: Delete
   uri:
-    url: 'https://{{ DNAC }}/api/v1/{{ posturl }}'
+    url: 'https://{{ host.dnac }}/api/v1/{{ deleteurl }}'
     method: DELETE
     return_content: yes
-    body: "{{ post_body | to_json }}"
     validate_certs: no
     headers:
         Cookie: "{{ cookie }}"
         Content-Type: application/json
     status_code: 202
-  register: post_response
+  register: delete_response
 
 - name: set taskId
-  set_fact: taskId="{{ post_response.json.response.taskId }}"
+  set_fact: taskId="{{ delete_response.json.response.taskId }}"
 
 - name: show taskId
   debug: var=taskId

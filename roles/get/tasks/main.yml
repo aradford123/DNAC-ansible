@@ -1,18 +1,20 @@
-- name: Post
+---
+
+- name: GET
   uri:
-    url: 'https://{{ DNAC }}/api/v1/{{ posturl }}'
-    method: POST
+    url: 'https://{{ dnac.host }}/api/v1/{{ geturl }}'
+    method: GET
     return_content: yes
-    body: "{{ post_body | to_json }}"
     validate_certs: no
     headers:
         Cookie: "{{ cookie }}"
-        Content-Type: application/json
-    status_code: 202
-  register: post_response
+    status_code: 200
+  register: response_json
 
-- name: set taskId
-  set_fact: taskId="{{ post_response.json.response.taskId }}"
+- name: set response
+  set_fact: response="{{ response_json.json.response }}"
 
-- name: show taskId
-  debug: var=taskId
+- name: show response
+  debug:
+    var: response
+    verbosity: 3
