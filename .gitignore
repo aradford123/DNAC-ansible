@@ -1,2 +1,4 @@
 *.retry
 .idea/*
+othervars.yml
+adamvars.yml
