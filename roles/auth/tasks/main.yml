@@ -14,8 +14,4 @@
 
 - name: Set cookie as fact
   set_fact: cookie="X-JWT-ACCESS-TOKEN={{ token.json.Token }}"
-
-# not really required
-- name: Check cookie
-  debug: var=cookie
-  verbosity: 3
+- debug: var=cookie, verbosity=3

@@ -13,8 +13,4 @@
 
 - name: set response
   set_fact: response="{{ response_json.json.response }}"
-
-- name: show response
-  debug:
-    var: response
-    verbosity: 3
+- debug: var=response, verbosity=3
